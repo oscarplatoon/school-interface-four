@@ -22,8 +22,6 @@ class SchoolInterface:
                 elif mode == '4':
                     self.delete_student()
                 elif mode == '5':
-                    self.authenticate_user()
-                elif mode == '6':
                     break  
         
         return
