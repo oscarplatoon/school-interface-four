@@ -4,21 +4,31 @@ class SchoolInterface:
 
     def __init__(self, school_name):
         self.school = School(school_name)
-    
-    def run(self):
-        while True:
-            mode = input(self.menu())
+        self.authenticated_user = False
 
-            if mode == '1':
-                self.school.list_students()
-            elif mode == '2':
-                self.view_student()
-            elif mode == '3':
-                self.add_student()
-            elif mode == '4':
-                self.delete_student()
-            elif mode == '5':
-                break  
+    def run(self):
+        
+        if self.authenticate_user():
+        
+            while True:
+                mode = input(self.menu())
+
+                if mode == '1':
+                    self.school.list_students()
+                elif mode == '2':
+                    self.view_student()
+                elif mode == '3':
+                    self.add_student()
+                elif mode == '4':
+                    self.delete_student()
+                elif mode == '5':
+                    self.authenticate_user()
+                elif mode == '6':
+                    break  
+        
+        return
+        
+
 
 
     def menu(self):
@@ -41,3 +51,25 @@ class SchoolInterface:
     def delete_student(self):
         student_id = input("Please enter the student's id:\n")
         self.school.delete_student(student_id)
+    
+    def authenticate_user(self):
+        authentication_fail_attempts = 0
+
+        while True:
+            employee_id = input("Please enter your employee ID:\n")
+            password = input("Please enter your password:\n")
+            self.authenticated_user = self.school.check_id_and_password(employee_id, password)
+            
+            if (not self.authenticated_user):
+                authentication_fail_attempts += 1
+                
+            if (authentication_fail_attempts >= 3):
+                print("Maximum number of authentication attempts reached")
+                return False
+            
+            elif self.authenticated_user:
+                return True
+           
+                
+
+        
