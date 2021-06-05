@@ -1,6 +1,6 @@
 import csv
 import os.path
-from classes.person import Person
+from .person import Person
 
 class Staff(Person):
 
