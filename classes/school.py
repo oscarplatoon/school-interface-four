@@ -39,3 +39,14 @@ class School:
             student_csv.writerow(['name', 'age', 'role', 'school_id', 'password'])
             for student in self.students:
                 student_csv.writerow([student.name, student.age, student.role, student.school_id, student.password])
+    
+    def check_employee_auth(self,staff_auth_id,staff_auth_pw):
+        for employee in self.staff:
+            if employee.employee_id == staff_auth_id and staff_auth_pw == employee.password:
+                return True
+            elif employee.employee_id == staff_auth_id:
+                print("Incorrect password.")
+                return False
+
+        print("Employee ID not found.")
+        return False

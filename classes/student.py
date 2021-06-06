@@ -20,7 +20,6 @@ class Student(Person):
         with open(path) as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                print(dict(row))
                 students.append(Student(**dict(row)))
 
         return students
