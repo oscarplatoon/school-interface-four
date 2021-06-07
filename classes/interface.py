@@ -1,6 +1,6 @@
+from os import sched_get_priority_max
 from classes.school import School
 from classes.staff import Staff
-from classes.student import Student
 
 
 class SchoolInterface:
@@ -8,6 +8,7 @@ class SchoolInterface:
     def __init__(self,school_name):
         self.school = School(school_name)
         self.employee_logged_in = False
+
 
     def run(self):
         self.authenticate_user()
@@ -38,9 +39,8 @@ class SchoolInterface:
         return "\nWhat would you like to do?\nOptions:\n1 list_students\n2 individul Student <student_id>\n3 add_student\n4 remove_student <student_id>\n5 quit\n"
     
     def authenticate_user(self):
-        self.staff_id = 
-        while self.employee_logged_in == False:
-            self.welcome = print(f"Welcome to the {self.school} School\n____________________________________")
-            self.employee_login = input(f"\nPlease enter a valid employee ID: ")
-            if self.staff_id == employee_login:
-                print("Thank you")
+        self.welcome = print(f"Welcome to {self.school} School\n________________________________")
+        self.employee_login = self.welcome, input(f"\nPlease enter a valid employee ID: ")
+        for staff in self.school.staff.employee_id:
+            if self.staff == employee_login:
+                return self.run()
